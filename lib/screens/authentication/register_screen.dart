@@ -186,10 +186,20 @@ class RegisterScreen extends StatelessWidget {
                     const SizedBox(
                       height: 50.0,
                     ),
-                    AuthReusableButton(
-                      onPressed: () {
-                        if (registerFormKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(context).register();
+                    BlocBuilder<AuthCubit, AuthStates>(
+                      builder: (context, state) {
+                        if (state is RegisterLoadingState) {
+                          return CircularProgressIndicator(
+                            color: MaterialTheme.lightScheme().primary,
+                          );
+                        } else {
+                          return AuthReusableButton(
+                            onPressed: () {
+                              if (registerFormKey.currentState!.validate()) {
+                                BlocProvider.of<AuthCubit>(context).register();
+                              }
+                            },
+                          );
                         }
                       },
                     ),

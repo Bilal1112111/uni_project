@@ -8,6 +8,7 @@ import 'package:hello_world/screens/settings/deep_setting_screen.dart';
 import 'package:hello_world/screens/settings/faq_screen.dart';
 import 'package:hello_world/screens/settings/privacy_policy_screen.dart';
 
+import '../../business_logic/cubits/auth_cubit/auth_cubit.dart';
 import '../../widgets/setting_list_item.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -56,6 +57,16 @@ class SettingScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       backgroundColor: Colors.greenAccent.withOpacity(.2),
+                      backgroundImage: BlocProvider.of<AuthCubit>(context)
+                                  .userModel!
+                                  .image !=
+                              null
+                          ? NetworkImage(
+                              BlocProvider.of<AuthCubit>(context)
+                                  .userModel!
+                                  .image!,
+                            )
+                          : null,
                       radius: 40.0,
                     ),
                     const SizedBox(
@@ -69,7 +80,9 @@ class SettingScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'Bilal Al Refaie',
+                            BlocProvider.of<AuthCubit>(context)
+                                .userModel!
+                                .fullName,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -78,7 +91,7 @@ class SettingScreen extends StatelessWidget {
                                 ),
                           ),
                           Text(
-                            'رقم الموبايل: 0959871726',
+                            'رقم الموبايل: ${BlocProvider.of<AuthCubit>(context).userModel!.phoneNumber}',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!

@@ -71,7 +71,7 @@ class DeepSettingScreen extends StatelessWidget {
                 (route) => false,
               );
               showSnackBar(context, 'تم إلغاء تفعيل حسابك', Colors.greenAccent);
-            } else if (state is HardDeleteLoadingState) {
+            } else if (state is HardDeleteErrorState) {
               showSnackBar(context, 'حدث خطأ ما', Colors.redAccent);
             } else if (state is HardDeleteSuccessState) {
               Navigator.pushNamedAndRemoveUntil(

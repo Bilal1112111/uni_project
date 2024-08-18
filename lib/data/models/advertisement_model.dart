@@ -10,12 +10,12 @@ class AdvertisementModel {
   final String phoneNumber;
   final String period;
   final String user;
-  final String price;
+  final String? price;
   final int shown;
   final String status;
   final String image;
   @JsonKey(name: 'accepted_at')
-  final String acceptedAt;
+  final String? acceptedAt;
 
   AdvertisementModel(
     this.description,

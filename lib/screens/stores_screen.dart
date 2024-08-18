@@ -52,7 +52,7 @@ class StoresScreen extends StatelessWidget {
               bottomRight: Radius.circular(25.0),
               bottomLeft: Radius.circular(25.0)),
           child: MyCustomAppBar(
-            label: 'المتاجر',
+            label: 'الفروع',
           ),
         ),
       ),
@@ -102,9 +102,10 @@ class StoresScreen extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          BlocProvider.of<StoreCubit>(context)
-                              .stores[index]
-                              .name,
+                          '',
+                          // BlocProvider.of<StoreCubit>(context)
+                          //     .branches[index]
+                          //     .name,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: Theme.of(context)

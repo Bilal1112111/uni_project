@@ -40,7 +40,7 @@ class AuthRemoteDataSource {
       }),
     );
     return BaseModel.fromJson(
-        response['data']['user'], (json) => UserModel.fromJson(json));
+        response, (json) => UserModel.fromJson(json['user']));
   }
 
   Future<BaseModel<UserModel>> login(
@@ -68,7 +68,7 @@ class AuthRemoteDataSource {
         .interceptors
         .add(TokenInterceptor(response['data']['access_token']));
     return BaseModel.fromJson(
-        response['data'], (json) => UserModel.fromJson(json));
+        response, (json) => UserModel.fromJson(json['user']));
   }
 
   Future<BaseModel<UserModel>> verifyEmail({

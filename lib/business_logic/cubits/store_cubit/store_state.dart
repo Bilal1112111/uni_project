@@ -2,11 +2,17 @@ abstract class StoreState {}
 
 class StoreInitialState extends StoreState {}
 
-class StoreByIdLoadingState extends StoreState {}
+class StoreByMerchantIdLoadingState extends StoreState {}
 
-class StoreByIdSuccessState extends StoreState {}
+class StoreByMerchantIdSuccessState extends StoreState {}
 
-class StoreByIdErrorState extends StoreState {}
+class StoreByMerchantIdErrorState extends StoreState {}
+
+class ShowStoreByIdLoadingState extends StoreState {}
+
+class ShowStoreByIdSuccessState extends StoreState {}
+
+class ShowStoreByIdErrorState extends StoreState {}
 
 class BranchByIdLoadingState extends StoreState {}
 
@@ -31,3 +37,9 @@ class AddComplaintLoadingState extends StoreState {}
 class AddComplaintErrorState extends StoreState {}
 
 class AddComplaintSuccessState extends StoreState {}
+
+class AddRateLoadingState extends StoreState {}
+
+class AddRateSuccessState extends StoreState {}
+
+class AddRateErrorState extends StoreState {}

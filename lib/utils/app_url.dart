@@ -31,6 +31,7 @@ class AppUrl {
   static const restoreAccount = "$baseUrl${auth}restore_my_account";
   /*>>>>>>>>>> Store <<<<<<<<<<*/
   static const storeById = "$baseUrl${auth}store_byID";
+  static const showStoreById = "$baseUrl${auth}show_store";
   static const listVisibleStores = "${baseUrl}list_visible_stores";
   /*>>>>>>>>>> Merchant <<<<<<<<<<*/
   static const getMerchantDetail = "$baseUrl${auth}get_merchant_detail";

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/screens/add_advertisement_screen.dart';
 import 'package:hello_world/utils/theme.dart';
-
-import '../screens/search_screen.dart';
 
 class SearchBarButton extends StatelessWidget {
   const SearchBarButton({
@@ -49,7 +48,7 @@ class SearchBarButton extends StatelessWidget {
           ],
         ),
         onTap: () {
-          Navigator.pushNamed(context, SearchScreen.route);
+          Navigator.pushNamed(context, AddAdvertisementScreen.route);
         },
       ),
     );

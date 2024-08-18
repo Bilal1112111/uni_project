@@ -18,7 +18,7 @@ class AuthCubit extends Cubit<AuthStates> {
   final AuthRepository _authRepository;
   AuthCubit(this._authRepository) : super(AuthInitialState());
   static AuthCubit get(context) => BlocProvider.of(context);
-  UserModel? _userModel;
+  UserModel? userModel;
   String? token;
   TextEditingController emailOrPhoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -95,7 +95,7 @@ class AuthCubit extends Cubit<AuthStates> {
             await imagePicker.pickImage(source: ImageSource.gallery);
         if (pickedImage != null) {
           imageName = pickedImage.name;
-
+          print('--------------------- $imageName');
           selectedImage = await pickedImage.readAsBytes();
           ;
         }
@@ -168,6 +168,7 @@ class AuthCubit extends Cubit<AuthStates> {
     );
 
     response.when(success: (data) {
+      userModel = data.data;
       emit(RegisterSuccessState());
     }, failure: (error) {
       emit(RegisterErrorState());
@@ -186,7 +187,10 @@ class AuthCubit extends Cubit<AuthStates> {
         deviceName: deviceData['deviceName'],
         notificationToken: deviceData['notificationToken']);
     response.when(
-      success: (data) => emit(LoginSuccessState()),
+      success: (data) {
+        emit(LoginSuccessState());
+        userModel = data.data;
+      },
       failure: (networkExceptions) {
         print(NetworkExceptions.getErrorMessage(networkExceptions));
         emit(LoginErrorState());

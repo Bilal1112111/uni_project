@@ -2,13 +2,17 @@ import 'package:get_it/get_it.dart';
 import 'package:hello_world/core/helpers/dio_helper.dart';
 import 'package:hello_world/core/network/api_service.dart';
 import 'package:hello_world/core/network/api_service_imp.dart';
+import 'package:hello_world/data/dataproviders/remote/advertisement_remote_data_source.dart';
 import 'package:hello_world/data/dataproviders/remote/auth_remote_data_source.dart';
 import 'package:hello_world/data/dataproviders/remote/categories_remote_data_source.dart';
+import 'package:hello_world/data/dataproviders/remote/comments_remote_data_source.dart';
 import 'package:hello_world/data/dataproviders/remote/favourite_remote_data_source.dart';
 import 'package:hello_world/data/dataproviders/remote/profile_remote_data_source.dart';
 import 'package:hello_world/data/dataproviders/remote/store_remote_data_source.dart';
+import 'package:hello_world/data/repo/advertisement_repository.dart';
 import 'package:hello_world/data/repo/auth_repository.dart';
 import 'package:hello_world/data/repo/categories_repository.dart';
+import 'package:hello_world/data/repo/comments_repository.dart';
 import 'package:hello_world/data/repo/favourite_repository.dart';
 import 'package:hello_world/data/repo/merchant_repository.dart';
 import 'package:hello_world/data/repo/profile_repository.dart';
@@ -42,4 +46,12 @@ Future setup() async {
       () => FavouriteRemoteDataSource(getIt()));
   getIt.registerLazySingleton<FavouriteRepository>(
       () => FavouriteRepository(getIt()));
+  getIt.registerLazySingleton<AdvertisementRemoteDataSource>(
+      () => AdvertisementRemoteDataSource(getIt()));
+  getIt.registerLazySingleton<AdvertisementRepository>(
+      () => AdvertisementRepository(getIt()));
+  getIt.registerLazySingleton<CommentsRemoteDataSource>(
+      () => CommentsRemoteDataSource(getIt()));
+  getIt.registerLazySingleton<CommentsRepository>(
+      () => CommentsRepository(getIt()));
 }

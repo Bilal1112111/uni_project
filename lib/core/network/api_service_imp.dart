@@ -15,7 +15,7 @@ class ApiServicesImp implements ApiServices {
       ..responseType = ResponseType.plain
       ..sendTimeout = const Duration(minutes: 1)
       ..receiveTimeout = const Duration(minutes: 1)
-      ..connectTimeout = const Duration(seconds: 15)
+      ..connectTimeout = const Duration(seconds: 30)
       ..followRedirects = true;
     _dio.interceptors.add(LogInterceptor(
       requestBody: true,

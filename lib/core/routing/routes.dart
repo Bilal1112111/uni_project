@@ -1,4 +1,7 @@
+import 'package:hello_world/screens/add_advertisement_screen.dart';
 import 'package:hello_world/screens/add_advertisiment_screen/advertising_finish_screen.dart';
+import 'package:hello_world/screens/add_complaint_screen.dart';
+import 'package:hello_world/screens/all_merchants_screen.dart';
 import 'package:hello_world/screens/archive_screen.dart';
 import 'package:hello_world/screens/authentication/forget_password_screen.dart';
 import 'package:hello_world/screens/authentication/login_screen.dart';
@@ -7,7 +10,9 @@ import 'package:hello_world/screens/authentication/register_screen.dart';
 import 'package:hello_world/screens/authentication/restore_account_screen.dart';
 import 'package:hello_world/screens/authentication/verification_screen.dart';
 import 'package:hello_world/screens/authentication/verify_email_screen.dart';
+import 'package:hello_world/screens/branch_screen.dart';
 import 'package:hello_world/screens/categories_screen.dart';
+import 'package:hello_world/screens/comments_screen.dart';
 import 'package:hello_world/screens/favourite_screen.dart';
 import 'package:hello_world/screens/home_screen.dart';
 import 'package:hello_world/screens/notification_screen.dart';
@@ -55,4 +60,9 @@ var routes = {
   DeepSettingScreen.route: (context) => DeepSettingScreen(),
   UpdateProfileScreen.route: (context) => UpdateProfileScreen(),
   RestoreAccountScreen.route: (context) => RestoreAccountScreen(),
+  AddAdvertisementScreen.route: (context) => AddAdvertisementScreen(),
+  AddComplaintScreen.route: (context) => AddComplaintScreen(),
+  BranchScreen.route: (context) => BranchScreen(),
+  AllMerchantsScreen.route: (context) => AllMerchantsScreen(),
+  CommentsScreen.route: (context) => CommentsScreen(),
 };

@@ -21,6 +21,7 @@ class UserModel {
     required this.phoneNumber,
     this.image,
   });
+  String get fullName => "$firstName $lastName";
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
   Map<String, dynamic> toJson() => _$UserModelToJson(this);

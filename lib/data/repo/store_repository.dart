@@ -8,25 +8,25 @@ class StoreRepository {
   final StoreRemoteDataSource _storeRemoteDataSource;
   StoreRepository(this._storeRemoteDataSource);
 
-  Future<ApiResponse<BaseModel>> storeById({required int id}) async {
-    try {
-      final response = await _storeRemoteDataSource.storeById(id: id);
-      return ApiResponse.success(response);
-    } catch (error) {
-      return ApiResponse.failure(NetworkExceptions.getException(error));
-    }
-  }
+  // Future<ApiResponse<BaseModel>> storeById({required int id}) async {
+  //   try {
+  //     final response = await _storeRemoteDataSource.storeById(id: id);
+  //     return ApiResponse.success(response);
+  //   } catch (error) {
+  //     return ApiResponse.failure(NetworkExceptions.getException(error));
+  //   }
+  // }
+  //
+  // Future<ApiResponse<BaseModel>> listVisibleStores() async {
+  //   try {
+  //     final response = await _storeRemoteDataSource.listVisibleStores();
+  //     return ApiResponse.success(response);
+  //   } catch (error) {
+  //     return ApiResponse.failure(NetworkExceptions.getException(error));
+  //   }
+  // }
 
-  Future<ApiResponse<BaseModel>> listVisibleStores() async {
-    try {
-      final response = await _storeRemoteDataSource.listVisibleStores();
-      return ApiResponse.success(response);
-    } catch (error) {
-      return ApiResponse.failure(NetworkExceptions.getException(error));
-    }
-  }
-
-  Future<ApiResponse<BaseModel>> branchById({required int id}) async {
+  Future<ApiResponse<BaseModel>> branchById({required String id}) async {
     try {
       final response = await _storeRemoteDataSource.branchById(id: id);
       return ApiResponse.success(response);
@@ -49,6 +49,28 @@ class StoreRepository {
     try {
       final response = await _storeRemoteDataSource.addComplaint(
           complaint: complaint, branchId: branchId);
+      return ApiResponse.success(response);
+    } catch (error) {
+      return ApiResponse.failure(NetworkExceptions.getException(error));
+    }
+  }
+
+  //
+  // Future<ApiResponse<BaseModel>> showStoreById(
+  //     {required String storeId}) async {
+  //   try {
+  //     final response =
+  //         await _storeRemoteDataSource.showStoreById(storeId: storeId);
+  //     return ApiResponse.success(response);
+  //   } catch (error) {
+  //     return ApiResponse.failure(NetworkExceptions.getException(error));
+  //   }
+  // }
+  Future<ApiResponse<BaseModel>> addRate(
+      {required int branchId, required String rate}) async {
+    try {
+      final response =
+          await _storeRemoteDataSource.addRate(rate: rate, branchId: branchId);
       return ApiResponse.success(response);
     } catch (error) {
       return ApiResponse.failure(NetworkExceptions.getException(error));

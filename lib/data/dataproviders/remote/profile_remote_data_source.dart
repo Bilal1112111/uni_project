@@ -12,8 +12,8 @@ class ProfileRemoteDataSource {
   Future<BaseModel<UserModel>> getProfile() async {
     final response = await _apiServices.get(AppUrl.getProfile);
     return BaseModel.fromJson(
-      response['data'],
-      (itemJson) => UserModel.fromJson(itemJson),
+      response,
+      (itemJson) => UserModel.fromJson(itemJson['user']),
     );
   }
 
@@ -41,12 +41,11 @@ class ProfileRemoteDataSource {
 
   Future<BaseModel<UserModel>> softAccountDelete() async {
     final response = await _apiServices.post(AppUrl.accountSoftDelete);
-    return BaseModel.fromJson(response, (json) => UserModel.fromJson(json));
+    return BaseModel(data: null, message: response['message']);
   }
 
   Future<BaseModel<UserModel>> hardAccountDelete() async {
     final response = await _apiServices.post(AppUrl.accountHardDelete);
-    return BaseModel.fromJson(
-        response['data'], (json) => UserModel.fromJson(json));
+    return BaseModel(data: null, message: response['message']);
   }
 }

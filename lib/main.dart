@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hello_world/business_logic/cubits/advertisement_cubit/advertisement_cubit.dart';
+import 'package:hello_world/business_logic/cubits/comments_cubit/comments_cubit.dart';
 import 'package:hello_world/business_logic/cubits/favourite_cubit/favourite_cubit.dart';
 import 'package:hello_world/business_logic/cubits/merchant_cubit/merchant_cubit.dart';
 import 'package:hello_world/business_logic/cubits/setting_cubit/setting_cubit.dart';
@@ -74,6 +76,12 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider(
           create: (context) => FavouriteCubit(getIt()),
+        ),
+        BlocProvider(
+          create: (context) => AdvertisementCubit(getIt()),
+        ),
+        BlocProvider(
+          create: (context) => CommentsCubit(getIt()),
         ),
       ],
       child: MaterialApp(

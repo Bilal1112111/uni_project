@@ -15,7 +15,7 @@ class AdvertisingSlider extends StatelessWidget {
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
             decoration: BoxDecoration(
               image: const DecorationImage(
-                image: AssetImage('assets/images/product1.jpg'),
+                image: AssetImage('assets/images/product3.jpg'),
                 fit: BoxFit.cover,
               ),
               color: const Color(0xFFB2BBCE).withOpacity(0.3),

@@ -8,6 +8,7 @@ import 'package:hello_world/screens/authentication/widget/auth_reusable_button.d
 import 'package:hello_world/widgets/my_custom_app_bar.dart';
 
 import '../../core/helpers/messages_helper.dart';
+import '../../utils/theme.dart';
 
 class RestoreAccountScreen extends StatelessWidget {
   RestoreAccountScreen({super.key});
@@ -90,12 +91,26 @@ class RestoreAccountScreen extends StatelessWidget {
                     const SizedBox(
                       height: 30,
                     ),
-                    AuthReusableButton(
-                      width: MediaQuery.sizeOf(context).width - 80,
-                      label: 'استرجاع',
-                      onPressed: () {
-                        if (restoreAccountGlobalKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(context).restoreAccount();
+                    BlocBuilder<AuthCubit, AuthStates>(
+                      builder: (context, state) {
+                        if (state is RestoreAccountLoadingState) {
+                          return CircularProgressIndicator(
+                            color: MaterialTheme.lightScheme().primary,
+                          );
+                        } else if (state is RestoreAccountSuccessState) {
+                          return AuthReusableButton(
+                            width: MediaQuery.sizeOf(context).width - 80,
+                            label: 'استرجاع',
+                            onPressed: () {
+                              if (restoreAccountGlobalKey.currentState!
+                                  .validate()) {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .restoreAccount();
+                              }
+                            },
+                          );
+                        } else {
+                          return SizedBox();
                         }
                       },
                     ),

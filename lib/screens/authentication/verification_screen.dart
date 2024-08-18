@@ -6,8 +6,9 @@ import 'package:hello_world/core/helpers/messages_helper.dart';
 import 'package:hello_world/screens/authentication/forget_password_screen.dart';
 import 'package:hello_world/screens/authentication/widget/auth_reusable_button.dart';
 import 'package:hello_world/screens/authentication/widget/otp.dart';
-import 'package:hello_world/screens/home_screen.dart';
+import 'package:hello_world/widgets/bottom_nav_bar.dart';
 
+import '../../business_logic/cubits/category_cubit/category_cubit.dart';
 import '../../utils/theme.dart';
 import '../../widgets/my_custom_app_bar.dart';
 
@@ -29,9 +30,11 @@ class VerificationScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is VerifyEmailSuccessState) {
           showSnackBar(context, 'تم توثيق حسابك', Colors.greenAccent);
+          BlocProvider.of<CategoriesCubit>(context).listVisibleCategories();
+          // BlocProvider.of<StoreCubit>(context).listVisibleStores();
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.route,
+            MyBottomNavBar.route,
             (route) => false,
           );
         } else if (state is VerifyEmailErrorState) {
@@ -121,19 +124,30 @@ class VerificationScreen extends StatelessWidget {
                     const SizedBox(
                       height: 40.0,
                     ),
-                    AuthReusableButton(
-                      label: 'تأكيد',
-                      onPressed: () {
-                        if (verifyFormKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(context).verifyEmail(
-                              code:
-                                  "${num1.text}${num2.text}${num3.text}${num4.text}");
-                          if (con == false) {}
-                          if (con == true) {
-                            BlocProvider.of<AuthCubit>(context).forgetPasswordCode(
-                                code:
-                                    '${num1.text}${num2.text}${num3.text}${num4.text}');
-                          }
+                    BlocBuilder<AuthCubit, AuthStates>(
+                      builder: (context, state) {
+                        if (state is VerifyEmailLoadingState) {
+                          return CircularProgressIndicator(
+                            color: MaterialTheme.lightScheme().primary,
+                          );
+                        } else {
+                          return AuthReusableButton(
+                            label: 'تأكيد',
+                            onPressed: () {
+                              if (verifyFormKey.currentState!.validate()) {
+                                BlocProvider.of<AuthCubit>(context).verifyEmail(
+                                    code:
+                                        "${num1.text}${num2.text}${num3.text}${num4.text}");
+                                if (con == false) {}
+                                if (con == true) {
+                                  BlocProvider.of<AuthCubit>(context)
+                                      .forgetPasswordCode(
+                                          code:
+                                              '${num1.text}${num2.text}${num3.text}${num4.text}');
+                                }
+                              }
+                            },
+                          );
                         }
                       },
                     ),

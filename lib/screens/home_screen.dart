@@ -64,7 +64,9 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                SearchBarButton(label: 'البحث عن طريق المنتج أو المتجر'),
+                SearchBarButton(
+                  label: 'البحث عن طريق المنتج أو المتجر',
+                ),
               ],
             ),
           ),
@@ -114,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                     height: 10.0,
                   ),
                   ListViewLabel(
-                    label: 'المتاجر',
+                    label: 'الفروع',
                     onPressed: () async {
                       Navigator.pushNamed(context, StoresScreen.route);
                     },

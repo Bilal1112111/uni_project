@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hello_world/business_logic/cubits/category_cubit/category_cubit.dart';
-import 'package:hello_world/business_logic/cubits/store_cubit/store_cubit.dart';
+import 'package:hello_world/business_logic/cubits/setting_cubit/setting_cubit.dart';
 import 'package:hello_world/core/helpers/messages_helper.dart';
 import 'package:hello_world/screens/authentication/register_screen.dart';
 import 'package:hello_world/screens/authentication/restore_account_screen.dart';
@@ -27,7 +27,8 @@ class LoginScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is LoginSuccessState) {
           BlocProvider.of<CategoriesCubit>(context).listVisibleCategories();
-          BlocProvider.of<StoreCubit>(context).listVisibleStores();
+          // BlocProvider.of<StoreCubit>(context).listVisibleStores();
+          BlocProvider.of<SettingCubit>(context).getProfile();
           //todo remove the comment
           // BlocProvider.of<AuthCubit>(context).emailOrPhoneController.clear();
           // BlocProvider.of<AuthCubit>(context).passwordController.clear();

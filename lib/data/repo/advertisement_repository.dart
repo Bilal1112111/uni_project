@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hello_world/core/network/api_response.dart';
 import 'package:hello_world/core/network/error_handler/network_exception.dart';
 import 'package:hello_world/data/dataproviders/remote/advertisement_remote_data_source.dart';
@@ -10,14 +12,17 @@ class AdvertisementRepository {
   Future<ApiResponse<BaseModel>> addAdvertisement(
       {required String description,
       required String phoneNumber,
-      required int period,
-      required String image}) async {
+      required String period,
+      required Uint8List image,
+      required String imageName}) async {
     try {
       final response = await _advertisementRemoteDataSource.addAdvertisement(
-          description: description,
-          phoneNumber: phoneNumber,
-          period: period,
-          image: image);
+        description: description,
+        phoneNumber: phoneNumber,
+        period: period,
+        image: image,
+        imageName: imageName,
+      );
       return ApiResponse.success(response);
     } catch (error) {
       return ApiResponse.failure(NetworkExceptions.getException(error));

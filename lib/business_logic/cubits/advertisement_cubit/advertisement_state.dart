@@ -19,3 +19,5 @@ class AdvertisementDetailsLoadingState extends AdvertisementState {}
 class AdvertisementDetailsErrorState extends AdvertisementState {}
 
 class AdvertisementDetailsSuccessState extends AdvertisementState {}
+
+class ChangeImageState extends AdvertisementState {}
